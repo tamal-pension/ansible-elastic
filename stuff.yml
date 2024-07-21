@@ -9,6 +9,17 @@
       value: "{{ private_ip }}"
       private: true
       ttl: 120
+    tags_facts:
+      private_dns: "private_dns"
+      private_domain: "private_domain"
+      initial_master_nodes: "initial_master_nodes"
+      data_snapshot: "data_snapshot"
+      node_data: "node_data"
+      node_master: "node_master"
+      minimum_master_nodes: "minimum_master_nodes"
+      es_discovery_cluster: "es_discovery_cluster"
+      es_memory_size: "es_memory_size"
+      seed_hosts: "seed_hosts"
 
 - include_role:
     name: elastic
