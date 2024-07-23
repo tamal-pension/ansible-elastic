@@ -26,8 +26,8 @@
   vars:
     #elastic_install: "{{ is_full_process or is_golden_image_process }}"
     #elastic_configure: "{{ is_full_process or not is_golden_image_process }}"
-    es_user: "{{ elastic_user }}"
-    es_group: "{{ elastic_group }}"
+    es_user: "{{ app_user }}"
+    es_group: "{{ app_group }}"
     es_data_dir: "{{ disk.mount }}/{{ disk.data_folder }}/data"
     es_log_dir: "{{ disk.mount }}/{{ disk.data_folder }}/log"
     es_config:
@@ -48,4 +48,4 @@
         minimum_master_nodes: "{{ minimum_master_nodes|default('') }}"
     memory_size: "{{ es_memory_size|default('') }}"
     ulimit:
-      user: "{{ elastic_user }}"
+      user: "{{ app_user }}"

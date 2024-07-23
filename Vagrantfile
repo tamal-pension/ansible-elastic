@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
   echo $PWD
   export VAULT_PASSWORD=#{`op read "op://Security/ansible-vault tamal-pension-stg/password"`.strip!}
   echo "$VAULT_PASSWORD" > vault_password
-  curl -s https://raw.githubusercontent.com/inqwise/ansible-automation-toolkit/master/main_amzn2023.sh | bash -s -- -r #{AWS_REGION} -e "playbook_name=elastic-test es_discovery_cluster=#{ES_CLUSTER} discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}" --topic-name #{TOPIC_NAME} --account-id #{ACCOUNT_ID}
+  curl -s https://raw.githubusercontent.com/inqwise/ansible-automation-toolkit/master/main_amzn2023.sh | bash -s -- -r #{AWS_REGION} -e "playbook_name=ansible-elasticsearch es_discovery_cluster=#{ES_CLUSTER} discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}" --topic-name #{TOPIC_NAME} --account-id #{ACCOUNT_ID}
   rm vault_password
 SHELL
 
@@ -44,8 +44,8 @@ SHELL
     aws.iam_instance_profile_name = "bootstrap-role"
     aws.tags = {
       Name: "elastic-test-#{Etc.getpwuid(Process.uid).name}",
-      private_dns: "elastic-test-#{Etc.getpwuid(Process.uid).name}"
-      #node_data: "false",
+      #private_dns: "elastic-test-#{Etc.getpwuid(Process.uid).name}",
+      #node_data: "true"
       #node_master: "true",
       #initial_master_nodes: "",
       #seed_hosts: "elastic-test" 
