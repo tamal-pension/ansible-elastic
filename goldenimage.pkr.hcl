@@ -70,7 +70,7 @@ build {
   provisioner "shell" {
     inline = [
       "id",
-      "curl -s https://raw.githubusercontent.com/inqwise/ansible-automation-toolkit/master/goldenimage_script.sh | bash -s --"
+      "curl -s https://raw.githubusercontent.com/xXkoshmarikXx/pension-ansible-elasticsearch/master/goldenimage_script.sh | bash -s --"
     ]
   }
 
