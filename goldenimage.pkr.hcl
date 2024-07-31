@@ -49,7 +49,7 @@ source "amazon-ebs" "amazon_linux2023" {
     app       = "${var.app}"
     version   = "${var.tag}"
     timestamp = "${local.timestamp}"
-    playbook_name = "ansible-elasticsearch"
+    playbook_name = "ansible-${var.app}"
   }
 
   tags = {
@@ -69,7 +69,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "echo $(id)",
+      "id",
       "curl -s https://raw.githubusercontent.com/inqwise/ansible-automation-toolkit/master/goldenimage_script.sh | bash -s --"
     ]
   }

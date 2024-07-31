@@ -15,8 +15,7 @@ variable "app" {
 
 variable "extra" {
   default = {
-    private_domain = "pension-stg.local",
-    playbook_name="ansible-elasticsearch"
+    private_domain = "pension-stg.local"
   }
 }
 
