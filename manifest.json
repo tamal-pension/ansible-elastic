@@ -1,0 +1,32 @@
+{
+  "builds": [
+    {
+      "name": "amazon_linux2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1722252309,
+      "files": null,
+      "artifact_id": "eu-west-1:ami-0e5ac9970b4bd4c8e",
+      "packer_run_uuid": "5e3dfe49-db6c-1d55-527a-a0bbf3c1c4e6",
+      "custom_data": null
+    },
+    {
+      "name": "amazon_linux2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1722252792,
+      "files": null,
+      "artifact_id": "eu-west-1:ami-0404bd4b6db18c217",
+      "packer_run_uuid": "119d7081-8f1f-54e2-7da8-95d6e6a6bd1f",
+      "custom_data": null
+    },
+    {
+      "name": "amazon_linux2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1722253819,
+      "files": null,
+      "artifact_id": "eu-west-1:ami-0f9908ad7ca602414",
+      "packer_run_uuid": "8aa98592-4809-e3fe-7f78-1631f2f08b88",
+      "custom_data": null
+    }
+  ],
+  "last_run_uuid": "8aa98592-4809-e3fe-7f78-1631f2f08b88"
+}
