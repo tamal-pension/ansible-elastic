@@ -1,4 +1,4 @@
-name: Deploy to S3 on Tag
+name: Elasticsearch on tag
 
 on:
   push:
@@ -23,5 +23,5 @@ jobs:
       REGION: "eu-west-1"
       CPU_ARCH: "arm64"
       OS: "amzn2023"
-      APP: "elasticsearch"
+      APP: "elastic"
       TOOLKIT_VERSION: "default"

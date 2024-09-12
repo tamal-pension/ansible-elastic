@@ -10,7 +10,7 @@ MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/inqwise/ansible-automation-
 TOPIC_NAME = "pre_playbook_errors"
 ACCOUNT_ID = "339712742264"
 AWS_REGION = "eu-west-1"
-ES_CLUSTER = 'pension-test-#{Etc.getpwuid(Process.uid).name}'
+ES_CLUSTER = "pension-test-#{Etc.getpwuid(Process.uid).name}"
 MAIN_SH_ARGS = <<MARKER
 -e "playbook_name=ansible-elasticsearch discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}" --tags installation
 MARKER
@@ -62,15 +62,15 @@ Vagrant.configure("2") do |config|
     aws.region = AWS_REGION
     aws.security_groups = ["sg-077f8d7d58d420467"]
     aws.ami = "ami-0fa86d752d8b7d1ff"
-    aws.instance_type = "r6g.medium"
-    aws.subnet_id = "subnet-0a5b54a2e357621e5"
-    #aws.associate_public_ip = true
+    aws.instance_type = "t4g.medium"
+    aws.subnet_id = "subnet-0331d92e81f166c9f"
+    aws.associate_public_ip = true
     aws.iam_instance_profile_name = "bootstrap-role"
     aws.tags = {
       Name: "elastic-test-#{Etc.getpwuid(Process.uid).name}",
-      playbook_name: "ansible-elasticsearch",
+      playbook_name: "ansible-elastic",
       version: "latest",
-      app: "elasticsearch",
+      app: "elastic",
       private_dns: "elastic-test-#{Etc.getpwuid(Process.uid).name}",
       es_cluster: ES_CLUSTER,
       node_data: "true"
