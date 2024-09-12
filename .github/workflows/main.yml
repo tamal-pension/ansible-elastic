@@ -1,4 +1,4 @@
-name: Elasticsearch on tag
+name: Elastic on tag
 
 on:
   push:
