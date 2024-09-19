@@ -9,7 +9,8 @@ users_groups:
 users:
   - name: "{{ app_user }}"
     group: "{{ app_group }}"
-    append: yes
+    append: true
+    system: true
 disk:
     name: /dev/sdb
     mount_options: defaults,noatime
@@ -20,13 +21,14 @@ disk:
     user: "{{ app_user }}"
     group: "{{ app_group }}"
     kms_key_id: "{{ disk_kms_key_id }}"
-    delete_on_termination: yes
+    delete_on_termination: true
     app: elastic-data
     enable: "{{ node_data }}"
 node_data: false
 node_master: false
-es_memory_size: 1g
 es_cluster_name: pension
 consul_cluster_tag_value: v1
-private_ip: "{{ ansible_default_ipv4['address'] }}"
+private_ip: "{{ ansible_default_ipv4.address }}"
 aws_iam_role: "elastic-role"
+consul_template_service_start_and_enable: false
+consul_service_start_and_enable: false
