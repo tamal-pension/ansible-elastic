@@ -10,7 +10,9 @@ users:
   - name: "{{ app_user }}"
     group: "{{ app_group }}"
     append: true
+    create_home: false
     system: true
+    shell: /sbin/nologin
 disk:
     name: /dev/sdb
     mount_options: defaults,noatime
