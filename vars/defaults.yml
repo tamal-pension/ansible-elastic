@@ -12,7 +12,6 @@ users:
     append: true
     create_home: false
     system: true
-    shell: /sbin/nologin
 disk:
     name: /dev/sdb
     mount_options: defaults,noatime
