@@ -42,7 +42,7 @@
         host_type: "private_ip"
         auto_attributes: true
         awareness.attributes: "aws_availability_zone"
-        cluster_name: "{{ es_cluster_name }}"
+        es_cluster: "{{ es_cluster_name }}"
         initial_master_nodes: "{{ (initial_master_nodes|default('')).split(',')|select() }}"
         seed_hosts: "{{ (seed_hosts|default('')).split(',')|select() }}"
         minimum_master_nodes: "{{ minimum_master_nodes|default('') }}"
