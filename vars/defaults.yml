@@ -11,7 +11,7 @@ users:
     group: "{{ app_group }}"
     append: true
     create_home: false
-    system: true
+    shell: /sbin/nologin
 disk:
     name: /dev/sdb
     mount_options: defaults,noatime
@@ -33,3 +33,4 @@ private_ip: "{{ ansible_default_ipv4.address }}"
 aws_iam_role: "elastic-role"
 consul_template_service_start_and_enable: false
 consul_service_start_and_enable: false
+loki_base_url: "http://loki.{{ private_domain }}:3100"

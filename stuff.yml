@@ -46,3 +46,48 @@
         initial_master_nodes: "{{ (initial_master_nodes|default('')).split(',')|select() }}"
         seed_hosts: "{{ (seed_hosts|default('')).split(',')|select() }}"
         minimum_master_nodes: "{{ minimum_master_nodes|default('') }}"
+
+- name: Install Alloy
+  include_role:
+    name: alloy
+  tags: alloy
+  vars:
+    alloy_user_groups:
+      - systemd-journal
+    env_file_vars:
+      CUSTOM_ARGS: "--server.http.listen-addr=0.0.0.0:12345 --disable-reporting=true --stability.level=public-preview"
+    config: |
+      loki.write "local" {
+        endpoint {
+          url = "{{ loki_base_url }}/loki/api/v1/push"
+        }
+      }
+
+      loki.relabel "journal" {
+        forward_to = []
+
+        rule {
+          source_labels = ["__journal__systemd_unit"]
+          regex         = "(elasticsearch.service|telegraf.service)"
+          action        = "keep"
+        }
+        rule {
+          source_labels = ["__journal__systemd_unit"]
+          target_label  = "unit"
+        }
+        rule {
+          source_labels = ["__journal__hostname"]
+          target_label  = "instance"
+        }
+      }
+
+      loki.source.journal "read" {
+        forward_to = [
+          loki.write.local.receiver,
+        ]
+        relabel_rules = loki.relabel.journal.rules
+        labels = {
+          "job" = "integrations/node_exporter",
+          "app" = "elastic",
+        }
+      }
