@@ -21,6 +21,7 @@
       es_cluster: "es_cluster_name"
       es_memory_size: "es_memory_size"
       seed_hosts: "seed_hosts"
+      disk_delete_on_termination: "disk_delete_on_termination"
 
 - name: Elastic Role
   ansible.builtin.import_role:

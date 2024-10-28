@@ -22,7 +22,7 @@ disk:
     user: "{{ app_user }}"
     group: "{{ app_group }}"
     kms_key_id: "{{ disk_kms_key_id }}"
-    delete_on_termination: true
+    delete_on_termination: "{{ disk_delete_on_termination | default(true) }}"
     app: elastic-data
     enable: "{{ node_data }}"
 node_data: false
