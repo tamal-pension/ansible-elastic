@@ -12,7 +12,7 @@ ACCOUNT_ID = "339712742264"
 AWS_REGION = "eu-west-1"
 ES_CLUSTER = "pension-test-#{Etc.getpwuid(Process.uid).name}"
 MAIN_SH_ARGS = <<MARKER
--e "playbook_name=ansible-elasticsearch discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}" --tags installation
+-e "playbook_name=ansible-elasticsearch discord_message_owner_name=#{Etc.getpwuid(Process.uid).name} environment_id=pension-stg.local" --tags "installation,configuration"
 MARKER
 Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL  
