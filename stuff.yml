@@ -122,8 +122,8 @@
         }
         stage.static_labels {
           values = {
-            "app" = "{{ app_name }}",
-            "unit"= "{{ app_name }}.service",
+            "app" = "elastic",
+            "unit"= "elasticsearch.service",
           }
         }
         forward_to = [
