@@ -37,6 +37,7 @@
       cluster_name: "{{ es_cluster_name }}"
       node_data: "{{ node_data }}"
       node_master: "{{ node_master }}"
+      aws_availability_zone: "{{ ec2_instance.zone }}"
     es_discovery:
       ec2:
         group: "elastic"
